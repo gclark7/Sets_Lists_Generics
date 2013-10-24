@@ -24,6 +24,7 @@ public class MapLab1 {
         // TODO code application logic here
         
         //Lab 1
+        System.out.println("Lab1");
         Map<String,JetFighter> jets = new HashMap<String,JetFighter>();
         
         JetFighter j1=new JetFighter("Ruthless");
@@ -40,6 +41,8 @@ public class MapLab1 {
         
         //Formal Lab 2
         //Non Generic
+        System.out.println("Lab2");
+        System.out.println("NON-Generics");
         List employees = new ArrayList();
         Employee e1 = new Employee("Doe", "John", "333-33-3333");
         Employee e2 = new Employee("Smith", "Sally", "111-11-1111");
@@ -57,8 +60,9 @@ public class MapLab1 {
         e5=(Employee)employees.get(1);
         System.out.println(e5.toString());
         
-        
+        //Lab 3
         //generics
+        System.out.println("Lab3");
         System.out.println("Generics");
         List<Employee> employees1 = new ArrayList<Employee>();
         Employee e6 = new Employee("Doe", "John", "333-33-3333");
@@ -73,6 +77,13 @@ public class MapLab1 {
         System.out.println("First size employees1");
         System.out.println(employees1.size());
         
+        for(Employee e:employees1){
+            System.out.println(e);
+        }
+        
+        //Lab4 remove duplicates from list
+        System.out.println("Lab4");
+        System.out.println("HashSet");
         Set<Employee> empSet = new LinkedHashSet<Employee>(employees1);
         
         employees1.clear();
@@ -83,6 +94,18 @@ public class MapLab1 {
         Employee e10=employees1.get(2);
         System.out.println(e10.toString());
         
+        //Lab5 HashMap
+        System.out.println("Lab5");
+        System.out.println("HashMap");
+        Map<Employee,String>hashyMap=new HashMap<Employee,String>();
+        hashyMap.put(e1,e1.getSsn());
+        hashyMap.put(e2,e2.getSsn());
+        hashyMap.put(e3,e3.getSsn());
+        hashyMap.put(e4,e4.getSsn());
+        
+        for(Employee e : hashyMap.keySet()){
+            System.out.println(e);
+        }
         
         
     }//main

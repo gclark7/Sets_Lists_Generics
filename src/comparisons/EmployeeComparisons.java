@@ -1,20 +1,21 @@
-package maplab1;
+package comparisons;
+
 
 import java.util.*;
 
-import org.apache.commons.lang3.builder.CompareToBuilder;//Apache Jakarta Commons Lang
+
 /**
  * Taken from GenericsAndSets from Jim L.
  * play with implements Comparable
  * override compareTo(Object target);
  * @author gclark7
  */
-public class Employee implements Comparable{
+public class EmployeeComparisons implements Comparable{
     private String lastName;
     private String firstName;
     private String ssn;
 
-    public Employee(String lastName, String firstName, String ssn) {
+    public EmployeeComparisons(String lastName, String firstName, String ssn) {
         this.lastName = lastName;
         this.firstName = firstName;
         this.ssn = ssn;
@@ -60,7 +61,7 @@ public class Employee implements Comparable{
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Employee other = (Employee) obj;
+        final EmployeeComparisons other = (EmployeeComparisons) obj;
         if (!Objects.equals(this.ssn, other.ssn)) {
             return false;
         }
@@ -72,15 +73,29 @@ public class Employee implements Comparable{
         return "Employee{" + "lastName=" + lastName + ", firstName=" + firstName + ", ssn=" + ssn + '}';
     }
 
-    @Override
-    public int compareTo(Object o) {
-        Employee other = (Employee)o;
+    /**
+     * 10/24/2013 playing with the comparesTo() method
+     * @param o
+     * @return comparable int result: -1,0,1
+     */
+    public int compareTo(Object o){
+        /**
+         * Strings have a built in compareTo() method
+         * If we use a String as a comparison we can call the String attribute to compareTo()
+         * as the return.<br/>
+         * 
+         * Otherwise we need to write code to compare an object to an object
+         * We can use a 3rd party library :: Apache Jarkarta Commons Lang
+         */
         
-        return new CompareToBuilder()
-               .append(this.ssn, other.ssn)
-               .toComparison();
+        //must cast Object to the appropriate object
+        final int BEFORE=-1;
+        final int SAME=0;
+        final int AFTER=1;
+        
+        int result=0;
+        
+        return result;
     }
-
-
     
 }
