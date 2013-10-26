@@ -10,6 +10,7 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeMap;
 
 /**
  *
@@ -31,10 +32,15 @@ public class MapLab1 {
         JetFighter j2=new JetFighter("BloodThirsty");
         JetFighter j3=new JetFighter("JackedUp");
         
+        jets.put(j1.getJetID(), j1);
         jets.put(j3.getJetID(), j3);
         jets.put(j2.getJetID(), j2);
-        jets.put(j1.getJetID(), j1);
+        jets.put("yellow", j1);
         
+        for(String s: jets.keySet()){
+            
+            System.out.println(s);
+        }
         System.out.println(jets.get(j1.getJetID()));
         
         //Formal Lab 1 completed 
@@ -106,6 +112,63 @@ public class MapLab1 {
         for(Employee e : hashyMap.keySet()){
             System.out.println(e);
         }
+        
+        //Lab5 HashMap -- Testing Duplicates
+        System.out.println("Lab5");
+        System.out.println("HashMap Duplicate Test");
+        hashyMap.put(e4,e4.getSsn());
+        hashyMap.put(e2,e2.getSsn());
+        hashyMap.put(e1,e1.getSsn());
+        hashyMap.put(e3,e3.getSsn());
+        
+        
+        for(Employee e : hashyMap.keySet()){
+            System.out.println(e);
+        }
+        
+         //Lab6 TreeMap
+        System.out.println("Lab6");
+        System.out.println("TreeMap");
+        Map<Employee,String>treeMapy=new TreeMap<Employee,String>();
+        treeMapy.put(e1,e1.getSsn());
+        treeMapy.put(e2,e2.getSsn());
+        treeMapy.put(e3,e3.getSsn());
+        treeMapy.put(e4,e4.getSsn());
+        
+        
+        for(Employee e : treeMapy.keySet()){
+            System.out.println(e);
+        }
+        
+        //Lab6 TreeMap
+        System.out.println("Lab6 Testing Comparator");
+        System.out.println("TreeMap");
+        Map<Employee,String>treeMapy2=new TreeMap<Employee,String>(new EmployeeByLastName());
+        treeMapy2.put(e1,e1.getSsn());
+        treeMapy2.put(e2,e2.getSsn());
+        treeMapy2.put(e3,e3.getSsn());
+        treeMapy2.put(e4,e4.getSsn());
+        System.out.println(treeMapy2.size());
+        
+        for(Employee e : treeMapy2.keySet()){
+            System.out.println(e);
+        }
+        
+        /*
+        //Lab6 TreeMap
+        System.out.println("Lab6 Testing Comparator -- ssn as key");//throws a cast exception String --> Employee
+        System.out.println("TreeMap");
+        Map<String,Employee>treeMapy3=new TreeMap<String,Employee>(new EmployeeByLastName());
+        treeMapy3.put(e1.getSsn(),e1);
+        treeMapy3.put(e2.getSsn(),e2);
+        treeMapy3.put(e3.getSsn(),e3);
+        treeMapy3.put(e4.getSsn(),e4);
+        System.out.println(treeMapy3.size());
+        
+        for(String s : treeMapy3.keySet()){
+            System.out.println(s);
+        }
+        */
         
         
     }//main

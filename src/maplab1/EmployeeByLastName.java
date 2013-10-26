@@ -10,12 +10,14 @@ import org.apache.commons.lang3.builder.CompareToBuilder;//Apache Jakarta Common
  * override compareTo(Object target);
  * @author gclark7
  */
-public class Employee implements Comparable{
+public class EmployeeByLastName implements Comparator{
     private String lastName;
     private String firstName;
     private String ssn;
 
-    public Employee(String lastName, String firstName, String ssn) {
+    public EmployeeByLastName(){}
+    
+    public EmployeeByLastName(String lastName, String firstName, String ssn) {
         this.lastName = lastName;
         this.firstName = firstName;
         this.ssn = ssn;
@@ -49,7 +51,7 @@ public class Employee implements Comparable{
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 23 * hash + Objects.hashCode(this.ssn);
+        hash = 23 * hash + Objects.hashCode(this.lastName);
         return hash;
     }
 
@@ -61,8 +63,8 @@ public class Employee implements Comparable{
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Employee other = (Employee) obj;
-        if (!Objects.equals(this.ssn, other.ssn)) {
+        final EmployeeByLastName other = (EmployeeByLastName) obj;
+        if (!Objects.equals(this.lastName, other.lastName)) {
             return false;
         }
         return true;
@@ -73,16 +75,29 @@ public class Employee implements Comparable{
         return "Employee{" + "lastName=" + lastName + ", firstName=" + firstName + ", ssn=" + ssn + '}';
     }
 
+    /*
     @Override
     public int compareTo(Object o) {
-        /*
-         * comparTo uses the integers -1, 0, 1 to produce the result before, same, after
-         */
-        Employee other = (Employee)o;
+        EmployeeByLastName other = (EmployeeByLastName)o;
         
         return new CompareToBuilder()
                .append(this.ssn, other.ssn)
                .toComparison();
+    }
+    * */
+
+    @Override
+    public int compare(Object o1, Object o2) {
+         /*EmployeeByLastName other1 = (EmployeeByLastName)o1;
+         EmployeeByLastName other2 = (EmployeeByLastName)o2;
+        
+        return new CompareToBuilder()
+               .append(other1.getLastName(), other2.getLastName())
+               .toComparison();
+               * */
+        Employee other1 = (Employee)o1;
+        Employee other2 = (Employee)o2;
+        return other1.getLastName().compareTo(other2.getLastName());
     }
 
 
