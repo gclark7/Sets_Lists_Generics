@@ -6,6 +6,7 @@ package maplab1;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
@@ -108,7 +109,8 @@ public class MapLab1 {
         hashyMap.put(e2,e2.getSsn());
         hashyMap.put(e3,e3.getSsn());
         hashyMap.put(e4,e4.getSsn());
-        
+        System.out.println("single item************");
+        System.out.println(hashyMap.get(e4));
         for(Employee e : hashyMap.keySet()){
             System.out.println(e);
         }
@@ -118,7 +120,7 @@ public class MapLab1 {
         System.out.println("HashMap Duplicate Test");
         hashyMap.put(e4,e4.getSsn());
         hashyMap.put(e2,e2.getSsn());
-        hashyMap.put(e1,e1.getSsn());
+        hashyMap.put(e4,e4.getSsn());
         hashyMap.put(e3,e3.getSsn());
         
         
@@ -169,6 +171,24 @@ public class MapLab1 {
             System.out.println(s);
         }
         */
+        
+        //Lab 7
+        System.out.println("Lab 7 using empSet");
+        List<Employee> a = new ArrayList<Employee>(empSet);
+        
+        //advanced for loop
+        for(Employee s : a){
+            System.out.println(a);
+        }
+        
+        System.out.println("Iterator ****************");
+        //Iterator can remove items ... it is a powerful tool
+        Iterator<Employee> i = a.iterator();
+        while(i.hasNext()){
+            Employee f = i.next();//MUST HAVE THIS or infinite loop
+            System.out.println(f);
+        }
+        
         
         
     }//main
